@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body onload="do_game()">
+    <script type="text/javascript">
+      var colors = ["blue", "cyan", "gold", "gray", "green", "magenta", "orange",
+    "red", "white", "yellow", "black", "darkgreen"];
+      var tries = 0;
+      function do_game() {
+        colors.sort(compare);
+
+        var target_index = Math.random() * colors.length;
+        target_index = Math.floor(target_index);
+        var target = colors[target_index];
+        alert("The target color is " + target +" [index=" + target_index + "]")
+
+        var finished = false;
+        while(!finished) {
+          var guess_input = prompt("I am thinking of one of these colors:\n\n" + colors.join() + "\n\nWhat color am i thinking of?");
+          tries++;
+          finished = target == guess_input;
+        }
+      }
+
+      // Function used to sort the array
+      function compare(a,b) {
+        if(a < b)
+          return -1;
+        else if(a > b)
+          return 1;
+        else
+          return 0;
+      }
+    </script>
+  </body>
+</html>
